@@ -1,7 +1,7 @@
 {
   "name": "express-injection-js",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.5.0",
+  "description": "This is a sample project for implementing DI via injection-js on Express",
   "main": "index.js",
   "scripts": {
     "build": "tsc -p .",
