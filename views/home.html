@@ -12,11 +12,11 @@
 </head>
 <body>
     <div class="container">
-        <form>
+        <form action="/search">
             <div class="form-group">
-                <label for="exampleInputEmail1">Search anything!</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ex. injections">
-                <small id="emailHelp" class="form-text text-muted">Powered by Google</small>
+                <label for="searchInput">Search anything!</label>
+                <input id="searchInput" type="text" name="term" class="form-control" placeholder="ex. injections">
+                <small class="form-text text-muted">Powered by Google</small>
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
