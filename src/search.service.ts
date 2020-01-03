@@ -1,6 +1,6 @@
 import { Inject, Injectable } from "injection-js";
 import { API_TOKEN, SEARCH_QUERY } from "./injection-tokens";
-import * as http from 'http';
+import * as request from "request";
 
 @Injectable()
 class SearchService {
@@ -13,25 +13,17 @@ class SearchService {
 
         return new Promise((resolve, reject) => {
 
-            let data = '';
+            let path = 'https://www.googleapis.com/customsearch/v1?' + [
+                'key=' + this.api_token,
+                'cx=' + '012115184303051364517:mmed9fntw3s',
+                'q=' + term
+            ].join('&');
 
-            const options = {
-                host: 'https://www.googleapis.com',
-                path: 'customsearch/v1?key=' + this.api_token + '&q=' + term,
-                method: 'GET',
-            };
-
-            const req = http.get(options, (res) => {
-                res.on('data', chunk => {
-                    data += chunk;
-                });
-                res.on('end', () => {
-                    resolve(data);
-                });
-            });
-
-            req.on('error', error => {
-                reject(error);
+            request({ url: path, json: true }, function (error, response, body) {
+                if (error) {
+                    return reject(error);
+                }
+                resolve(body.items);
             });
         });
     }

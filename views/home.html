@@ -8,29 +8,41 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Search Inject!</title>
+    <title>Search IMDB</title>
 </head>
 <body>
     <div class="container">
         <form id="searchForm">
             <div class="form-group">
-                <label for="searchInput">Search anything!</label>
+                <label for="searchInput">Search anything in IMDB!</label>
                 <input id="searchInput" type="text" name="term" class="form-control" placeholder="ex. injections">
                 <small class="form-text text-muted">Powered by Google</small>
             </div>
             <button id="submitButton" type="submit" class="btn btn-primary">Search</button>
         </form>
-        <p id="searchResult"></p>
+    </div>
+    <div class="container">
+        <ul id="resultsList"></ul>
     </div>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="application/javascript">
+
+        const render = function(items, toList) {
+            $.each(items, function(i) {
+                const item = items[i];
+                const li = $('<li/>').appendTo(toList);
+                const aa = $('<a/>').attr('href', item.link).text(item.title).appendTo(li);
+                return aa;
+            });
+        };
         $('#searchForm').submit(function(event) {
             event.preventDefault();
             let url = '/search?term=' + $('input[name=term]').val();
-            $.get(url, function (data) {
-                alert(data);
+            $.get(url, function (items) {
+                const list = $('#resultsList');
+                render(items, list);
             });
         });
     </script>
