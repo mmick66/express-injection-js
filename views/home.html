@@ -12,15 +12,27 @@
 </head>
 <body>
     <div class="container">
-        <form action="/search">
+        <form id="searchForm">
             <div class="form-group">
                 <label for="searchInput">Search anything!</label>
                 <input id="searchInput" type="text" name="term" class="form-control" placeholder="ex. injections">
                 <small class="form-text text-muted">Powered by Google</small>
             </div>
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button id="submitButton" type="submit" class="btn btn-primary">Search</button>
         </form>
+        <p id="searchResult"></p>
     </div>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="application/javascript">
+        $('#searchForm').submit(function(event) {
+            event.preventDefault();
+            let url = '/search?term=' + $('input[name=term]').val();
+            $.get(url, function (data) {
+                alert(data);
+            });
+        });
+    </script>
 </body>
 </html>
