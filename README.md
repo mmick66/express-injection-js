@@ -8,5 +8,5 @@ Tutorial on using injection-js with express. Full article on [Medium](https://me
 git clone git@github.com:mmick66/express-injection-js.git
 cd express-injection-js
 npm install
-npm start
+npm run dev
 ```
