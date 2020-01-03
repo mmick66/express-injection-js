@@ -1,4 +1,4 @@
-import * as express from 'express'
+import * as express from 'express';
 import 'reflect-metadata';
 import { Provider, ReflectiveInjector } from "injection-js";
 import { API_TOKEN, SEARCH_QUERY, SEARCH_SERVICE } from "./injection-tokens";
@@ -32,14 +32,11 @@ app.get('/search', (request, response) => {
     controller
         .search()
         .then(res => {
-            console.log(res);
             response.send(res);
         }).catch(err => {
             console.error(err);
-            response.send(err);
+            response.end();
         });
-
-
 
 });
 

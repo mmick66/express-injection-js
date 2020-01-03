@@ -1,8 +1,7 @@
 import SearchService from "./search.service";
-import { Inject, Injectable } from "injection-js";
+import { Inject } from "injection-js";
 import { SEARCH_QUERY, SEARCH_SERVICE } from "./injection-tokens";
 
-@Injectable()
 class HomeController {
     constructor(
         @Inject(SEARCH_SERVICE) private service: SearchService,

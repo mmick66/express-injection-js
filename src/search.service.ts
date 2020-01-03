@@ -1,5 +1,5 @@
 import { Inject, Injectable } from "injection-js";
-import { API_TOKEN, SEARCH_QUERY } from "./injection-tokens";
+import { API_TOKEN } from "./injection-tokens";
 import * as request from "request";
 
 @Injectable()
